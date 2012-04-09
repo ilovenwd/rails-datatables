@@ -82,7 +82,7 @@ Independent fields search will always search using "starts_with" finder.
 
 The following code will show products list datatables. Manufacturer is belongs_to association for Product.
 
-In your controller:
+In your controller (products_controller.rb):
 
   respond_to :html, :datatables
   
@@ -92,13 +92,13 @@ In your controller:
     respond_with @products
   end
 
-In your search view:
+In your search view (search.datatables.jsonify):
 
   @products.each do |product|
     json << [product.name, product.manufacturer.name]
   end
 
-In your index view:
+In your index view (index.html.haml):
 
   %table#products
     %thead
@@ -119,7 +119,7 @@ In your javascript:
         {"sName":"manufacturer_name"},
       ],
       "bServerSide"     : true,
-      "fnServerData"    : simpleDatatables
+      "fnServerData"    : railsDatatables
     });
 
 == Copyright
